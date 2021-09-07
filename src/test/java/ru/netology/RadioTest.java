@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class RadioTest {
 
 
-    // Клиент задает номер текущей радиостанции
+    // Проверка включается ли радио
     @Test
     void shouldIsOn() {
         Radio radio = new Radio();
@@ -27,6 +27,7 @@ class RadioTest {
 
         assertEquals(5, radio.getCurrentRadioStation());
     }
+
 
     // Проверка валидности номера текущей радиостанции
     @Test

@@ -11,7 +11,6 @@ public class Radio {
     private int minVolume = 0;
     private int maxVolume = 10;
 
-
     public boolean isOn() {
         return on;
     }
@@ -22,8 +21,8 @@ public class Radio {
 
 
     public void setCurrentRadioStation(int currentRadioStation) {
-        if (currentRadioStation<minStation) return;
-        if (currentRadioStation>maxStation) return;
+        if (currentRadioStation < minStation) return;
+        if (currentRadioStation > maxStation) return;
         this.currentRadioStation = currentRadioStation;
     }
 
