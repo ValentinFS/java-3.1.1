@@ -7,120 +7,140 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class RadioTest {
 
-
-    // Проверка включается ли радио
     @Test
     void shouldIsOn() {
         Radio radio = new Radio();
-
         radio.setOn(true);
-
         assertEquals(true, radio.isOn());
     }
 
-    // Клиент задает номер текущей радиостанции
     @Test
     void shouldSetCurrentRadioStation() {
         Radio radio = new Radio();
-
-        radio.setCurrentRadioStation(5);
-
-        assertEquals(5, radio.getCurrentRadioStation());
-    }
-
-
-    // Проверка валидности номера текущей радиостанции
-    @Test
-    void shouldCheckValidStationOverLimit() {
-        Radio radio = new Radio();
-
-        radio.checkValidStationOverLimit(10);
-
+        radio.setCurrentRadioStation(-1);
         assertEquals(0, radio.getCurrentRadioStation());
-    }
-
-    @Test
-    void shouldCheckValidStationUnderLimit() {
-        Radio radio = new Radio();
-
-        radio.checkValidStationUnderLimit(-1);
-
+        radio.setCurrentRadioStation(0);
+        assertEquals(0, radio.getCurrentRadioStation());
+        radio.setCurrentRadioStation(1);
+        assertEquals(1, radio.getCurrentRadioStation());
+        radio.setCurrentRadioStation(5);
+        assertEquals(5, radio.getCurrentRadioStation());
+        radio.setCurrentRadioStation(8);
+        assertEquals(8, radio.getCurrentRadioStation());
+        radio.setCurrentRadioStation(9);
+        assertEquals(9, radio.getCurrentRadioStation());
+        radio.setCurrentRadioStation(10);
         assertEquals(9, radio.getCurrentRadioStation());
     }
-
-    // Увеличение номера радиостанции
 
     @Test
     void shouldIncreaseRadioStation() {
         Radio radio = new Radio();
+        radio.setCurrentRadioStation(-1);
+        radio.increaseRadioStation();
+        assertEquals(1, radio.getCurrentRadioStation());
+        radio.setCurrentRadioStation(0);
+        radio.increaseRadioStation();
+        assertEquals(1, radio.getCurrentRadioStation());
+        radio.setCurrentRadioStation(1);
+        radio.increaseRadioStation();
+        assertEquals(2, radio.getCurrentRadioStation());
         radio.setCurrentRadioStation(5);
         radio.increaseRadioStation();
-        radio.checkValidStationOverLimit(radio.getCurrentRadioStation());
-
         assertEquals(6, radio.getCurrentRadioStation());
+        radio.setCurrentRadioStation(8);
+        radio.increaseRadioStation();
+        assertEquals(9, radio.getCurrentRadioStation());
+        radio.setCurrentRadioStation(9);
+        radio.increaseRadioStation();
+        assertEquals(0, radio.getCurrentRadioStation());
     }
-
-    // Уменьшение номера радиостанции
 
     @Test
     void shouldDecreaseRadioStation() {
         Radio radio = new Radio();
+        radio.setCurrentRadioStation(0);
+        radio.decreaseRadioStation();
+        assertEquals(9, radio.getCurrentRadioStation());
+        radio.setCurrentRadioStation(1);
+        radio.decreaseRadioStation();
+        assertEquals(0, radio.getCurrentRadioStation());
         radio.setCurrentRadioStation(5);
         radio.decreaseRadioStation();
-        radio.checkValidStationUnderLimit(radio.getCurrentRadioStation());
-
         assertEquals(4, radio.getCurrentRadioStation());
+        radio.setCurrentRadioStation(8);
+        radio.decreaseRadioStation();
+        assertEquals(7, radio.getCurrentRadioStation());
+        radio.setCurrentRadioStation(9);
+        radio.decreaseRadioStation();
+        assertEquals(8, radio.getCurrentRadioStation());
     }
-
-
-    // Клиент задает валидный уровень громкости
 
     @Test
     void shouldSetValidVolume() {
         Radio radio = new Radio();
-
+        radio.setCurrentVolume(-1);
+        assertEquals(0, radio.getVolume());
+        radio.setCurrentVolume(0);
+        assertEquals(0, radio.getVolume());
+        radio.setCurrentVolume(1);
+        assertEquals(1, radio.getVolume());
         radio.setCurrentVolume(5);
-
         assertEquals(5, radio.getVolume());
-    }
-
-    // Проверка валидности уровня громкости
-
-    @Test
-    void shouldCheckVolumeOverLimit() {
-        Radio radio = new Radio();
-
-        radio.checkValidVolumeOverLimit(11);
-
+        radio.setCurrentVolume(9);
+        assertEquals(9, radio.getVolume());
+        radio.setCurrentVolume(10);
+        assertEquals(10, radio.getVolume());
+        radio.setCurrentVolume(11);
         assertEquals(10, radio.getVolume());
     }
 
-    @Test
-    void shouldCheckVolumeUnderLimit() {
-        Radio radio = new Radio();
-
-        radio.checkValidVolumeUnderLimit(-1);
-
-        assertEquals(0, radio.getVolume());
-    }
-
-    // Увеличение уровня громкости
     @Test
     void shouldIncreaseVolume() {
         Radio radio = new Radio();
-
-        radio.increaseVolume(9);
-
+        radio.setCurrentVolume(-1);
+        radio.increaseVolume();
+        assertEquals(1, radio.getVolume());
+        radio.setCurrentVolume(0);
+        radio.increaseVolume();
+        assertEquals(1, radio.getVolume());
+        radio.setCurrentVolume(5);
+        radio.increaseVolume();
+        assertEquals(6, radio.getVolume());
+        radio.setCurrentVolume(9);
+        radio.increaseVolume();
+        assertEquals(10, radio.getVolume());
+        radio.setCurrentVolume(10);
+        radio.increaseVolume();
+        assertEquals(10, radio.getVolume());
+        radio.setCurrentVolume(11);
+        radio.increaseVolume();
         assertEquals(10, radio.getVolume());
     }
 
-    // Уменьшение уровня громкости
     @Test
     void shouldDecreaseVolume() {
         Radio radio = new Radio();
-
-        radio.decreaseVolume(10);
-
+        radio.setCurrentVolume(-1);
+        radio.decreaseVolume();
+        assertEquals(0, radio.getVolume());
+        radio.setCurrentVolume(0);
+        radio.decreaseVolume();
+        assertEquals(0, radio.getVolume());
+        radio.setCurrentVolume(1);
+        radio.decreaseVolume();
+        assertEquals(0, radio.getVolume());
+        radio.setCurrentVolume(5);
+        radio.decreaseVolume();
+        assertEquals(4, radio.getVolume());
+        radio.setCurrentVolume(9);
+        radio.decreaseVolume();
+        assertEquals(8, radio.getVolume());
+        radio.setCurrentVolume(10);
+        radio.decreaseVolume();
+        assertEquals(9, radio.getVolume());
+        radio.setCurrentVolume(11);
+        radio.decreaseVolume();
         assertEquals(9, radio.getVolume());
     }
 
