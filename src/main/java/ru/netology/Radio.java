@@ -31,16 +31,13 @@ public class Radio {
     }
 
     public void increaseRadioStation() {
-        if (currentRadioStation <= maxStation)
             currentRadioStation = currentRadioStation + 1;
         if (currentRadioStation > maxStation)
             currentRadioStation = minStation;
     }
 
     public void decreaseRadioStation() {
-        if (currentRadioStation >= minStation) {
             currentRadioStation = currentRadioStation - 1;
-        }
         if (currentRadioStation < minStation)
             currentRadioStation = maxStation;
 

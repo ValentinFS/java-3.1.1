@@ -36,9 +36,6 @@ class RadioTest {
     @Test
     void shouldIncreaseRadioStation() {
         Radio radio = new Radio();
-        radio.setCurrentRadioStation(-1);
-        radio.increaseRadioStation();
-        assertEquals(1, radio.getCurrentRadioStation());
         radio.setCurrentRadioStation(0);
         radio.increaseRadioStation();
         assertEquals(1, radio.getCurrentRadioStation());
