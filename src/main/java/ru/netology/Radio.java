@@ -28,14 +28,6 @@ public class Radio {
         this.amountStation = amountStation;
     }
 
-    public int getAmountStation() {
-        return amountStation;
-    }
-
-    public int getMaxStation() {
-        return maxStation;
-    }
-
 
     public boolean isOn() {
         return on;
