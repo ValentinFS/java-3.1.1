@@ -16,13 +16,6 @@ class RadioTest {
 
 
     @Test
-    void shouldCheckAmountStationUnderMin() {
-        Radio radio = new Radio(0);
-        assertEquals(10, radio.getAmountStation());
-        assertEquals(9, radio.getMaxStation());
-    }
-
-    @Test
     void shouldCheckAmountStationMin() {
         Radio radio = new Radio(1);
         assertEquals(1, radio.getAmountStation());
@@ -53,13 +46,6 @@ class RadioTest {
     @Test
     void shouldCheckAmountStationMax() {
         Radio radio = new Radio(10);
-        assertEquals(10, radio.getAmountStation());
-        assertEquals(9, radio.getMaxStation());
-    }
-
-    @Test
-    void shouldCheckAmountStationOverMax() {
-        Radio radio = new Radio(11);
         assertEquals(10, radio.getAmountStation());
         assertEquals(9, radio.getMaxStation());
     }
