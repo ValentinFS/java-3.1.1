@@ -6,10 +6,29 @@ public class Radio {
     private int currentRadioStation;
     private int minStation = 0;
     private int maxStation = 9;
+    private int amountStation = 10;
 
     private int volume;
     private int minVolume = 0;
-    private int maxVolume = 10;
+    private int maxVolume = 100;
+
+
+    public Radio() {
+    }
+
+    public Radio(int amountStation) {
+        this.maxStation = amountStation - 1;
+        this.amountStation = amountStation;
+    }
+
+    public int getAmountStation() {
+        return amountStation;
+    }
+
+    public int getMaxStation() {
+        return maxStation;
+    }
+
 
     public boolean isOn() {
         return on;
@@ -31,13 +50,13 @@ public class Radio {
     }
 
     public void increaseRadioStation() {
-            currentRadioStation = currentRadioStation + 1;
+        currentRadioStation = currentRadioStation + 1;
         if (currentRadioStation > maxStation)
             currentRadioStation = minStation;
     }
 
     public void decreaseRadioStation() {
-            currentRadioStation = currentRadioStation - 1;
+        currentRadioStation = currentRadioStation - 1;
         if (currentRadioStation < minStation)
             currentRadioStation = maxStation;
 
